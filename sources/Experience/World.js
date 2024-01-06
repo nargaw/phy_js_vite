@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import Experience from './Experience.js'
 import Environment from './environment.js'
+import Ground from './Scene/Ground.js'
 
 export default class World
 {
@@ -16,9 +17,10 @@ export default class World
             if(_group.name === 'base')
             {
                 this.setDummy()
+                this.environment = new Environment()
             }
         })
-        this.environment = new Environment()
+        this.ground = new Ground()
     }
 
     setDummy()
@@ -27,7 +29,7 @@ export default class World
         
         const cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshBasicMaterial()
+            new THREE.MeshNormalMaterial()
         )
         this.scene.add(cube)        
     }
