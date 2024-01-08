@@ -8,6 +8,7 @@ import Stats from './Utils/Stats.js'
 import Resources from './Resources.js'
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
+import Physics from './Physics.js'
 import World from './World.js'
 
 import assets from './assets.js'
@@ -42,6 +43,7 @@ export default class Experience
         this.setCamera()
         this.setRenderer()
         this.setResources()
+        this.physics = new Physics().setPhysics()
         this.setWorld()
         
         this.sizes.on('resize', () =>
@@ -110,6 +112,15 @@ export default class Experience
     {
         this.world = new World()
     }
+
+    setPhysics()
+    {
+        this.worldPhysics = new CANNON.World({
+            gravity: new CANNON.Vec3(0, -9.82, 0)
+        })
+    }
+
+
 
     update()
     {
