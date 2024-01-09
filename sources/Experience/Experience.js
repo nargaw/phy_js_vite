@@ -43,7 +43,7 @@ export default class Experience
         this.setCamera()
         this.setRenderer()
         this.setResources()
-        this.physics = new Physics().setPhysics()
+        this.physics = new Physics()
         this.setWorld()
         
         this.sizes.on('resize', () =>
@@ -113,15 +113,6 @@ export default class Experience
         this.world = new World()
     }
 
-    setPhysics()
-    {
-        this.worldPhysics = new CANNON.World({
-            gravity: new CANNON.Vec3(0, -9.82, 0)
-        })
-    }
-
-
-
     update()
     {
         if(this.stats)
@@ -134,6 +125,12 @@ export default class Experience
         
         if(this.renderer)
             this.renderer.update()
+
+        if(this.physics)
+            this.physics.updatePhysics()
+
+        if(this.world)
+            this.world.update()
 
         window.requestAnimationFrame(() =>
         {
