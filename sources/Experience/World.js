@@ -3,6 +3,7 @@ import * as CANNON from 'cannon-es'
 import Experience from './Experience.js'
 import Environment from './environment.js'
 import Ground from './Scene/Ground.js'
+import EnclosedBox from './Scene/EnclosedBox.js'
 
 export default class World
 {
@@ -22,7 +23,8 @@ export default class World
                 this.environment = new Environment()
             }
         })
-        this.ground = new Ground()
+        // this.ground = new Ground()
+        this.enclosedBox = new EnclosedBox()
     }
 
     setDummy()
@@ -31,7 +33,7 @@ export default class World
         
         this.cube = new THREE.Mesh(
             new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshNormalMaterial()
+            new THREE.MeshStandardMaterial()
         )
         this.scene.add(this.cube)
         

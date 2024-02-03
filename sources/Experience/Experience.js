@@ -9,6 +9,7 @@ import Resources from './Resources.js'
 import Renderer from './Renderer.js'
 import Camera from './Camera.js'
 import Physics from './Physics.js'
+import PhysicsDebugger from './PhysicsDebugger.js'
 import World from './World.js'
 
 import assets from './assets.js'
@@ -44,6 +45,7 @@ export default class Experience
         this.setRenderer()
         this.setResources()
         this.physics = new Physics()
+        this.physicsDebugger = new PhysicsDebugger()
         this.setWorld()
         
         this.sizes.on('resize', () =>
@@ -128,6 +130,9 @@ export default class Experience
 
         if(this.physics)
             this.physics.updatePhysics()
+
+        if(this.physicsDebugger && this.debug)
+            this.physicsDebugger.update()
 
         if(this.world)
             this.world.update()

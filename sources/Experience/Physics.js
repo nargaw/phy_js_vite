@@ -11,7 +11,7 @@ export default class Physics
     setPhysics()
     {
         this.world = new CANNON.World({
-            gravity: new CANNON.Vec3(0, -9.82, 0)
+            gravity: new CANNON.Vec3(0,0, 0)
         })
         console.log('here')
     }
